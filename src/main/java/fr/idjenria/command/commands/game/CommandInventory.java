@@ -3,7 +3,6 @@ package fr.idjenria.command.commands.game;
 import fr.idjenria.command.Command;
 import fr.idjenria.command.CommandExecutor;
 import fr.idjenria.command.CommandResult;
-import fr.idjenria.game.item.Item;
 import fr.idjenria.game.player.Player;
 import fr.idjenria.utils.Utils;
 import org.javacord.api.entity.message.embed.EmbedBuilder;
@@ -58,7 +57,7 @@ public class CommandInventory implements CommandExecutor {
         // Création de l'Embed de réponse
         EmbedBuilder embed = new EmbedBuilder()
                 .setTitle("Inventaire") // Titre de l'Embed
-                .setColor(Color.cyan); // Couleur de l'Embed (couleur du rôle de l'utilisateur)
+                .setColor(Color.green); // Couleur de l'Embed (info = vert)
 
         // Ajouter une image pour indiquer le propriétaire de l'inventaire
         embed.setThumbnail(user.getAvatar());

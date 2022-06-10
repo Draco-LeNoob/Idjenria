@@ -4,7 +4,6 @@ import fr.idjenria.command.Command;
 import fr.idjenria.command.CommandExecutor;
 import fr.idjenria.command.CommandResult;
 import fr.idjenria.game.item.Item;
-import fr.idjenria.game.item.Material;
 import fr.idjenria.game.player.Player;
 import fr.idjenria.utils.Utils;
 import org.javacord.api.entity.message.embed.EmbedBuilder;
@@ -22,7 +21,7 @@ public class CommandGive implements CommandExecutor {
             User user = Utils.fromOptional(event.getMessageAuthor().asUser());
 
             // Récupérer l'item
-            Material material = getMaterial(args[0]);
+            Item material = getMaterial(args[0]);
 
             if(material == null) return CommandResult.INVALID_ARGUMENT;
 
@@ -39,7 +38,7 @@ public class CommandGive implements CommandExecutor {
             if(user == null) return CommandResult.INVALID_ARGUMENT;
 
             // Définir l'item à donner et sa quantité
-            Material material = getMaterial(args[0]);
+            Item material = getMaterial(args[0]);
             int amount = getAmount(args[1]);
 
             // Vérifier l'item et sa quantité
@@ -59,7 +58,7 @@ public class CommandGive implements CommandExecutor {
             if(user == null) return CommandResult.INVALID_ARGUMENT;
 
             // Définir l'item à donner et sa quantité
-            Material material = getMaterial(args[1]);
+            Item material = getMaterial(args[1]);
             int amount = getAmount(args[2]);
 
             // Vérifier l'item et sa quantité
@@ -76,11 +75,11 @@ public class CommandGive implements CommandExecutor {
         }
     }
 
-    private Material getMaterial(String arg){
-        Material material;
+    private Item getMaterial(String arg){
+        Item material;
 
         try{
-            material = Material.valueOf(arg.toUpperCase());
+            material = Item.valueOf(arg.toUpperCase());
         }catch(Exception e){
             return null;
         }
@@ -100,7 +99,7 @@ public class CommandGive implements CommandExecutor {
         return amount;
     }
 
-    private void add(MessageCreateEvent event, User user, Material material, int amount){
+    private void add(MessageCreateEvent event, User user, Item material, int amount){
         // Ajouter l'item à l'inventaire
         Player.addItemToInventoryOf(Utils.fromOptional(event.getServer()), user, new Item(material, amount));
 

@@ -1,6 +1,8 @@
 package fr.idjenria.command;
 
+import fr.idjenria.command.commands.game.CommandEvent;
 import fr.idjenria.command.commands.game.CommandInventory;
+import fr.idjenria.command.commands.game.CommandProfile;
 import fr.idjenria.command.commands.moderation.CommandClear;
 import fr.idjenria.command.commands.moderation.CommandGive;
 import org.javacord.api.event.message.MessageCreateEvent;
@@ -25,7 +27,9 @@ public record Command(String getId, CommandExecutor getExecutor, String... getAl
                 List.of(
                         new Command("inventory", new CommandInventory(), "i", "inv"),
                         new Command("clear", new CommandClear(), "c"),
-                        new Command("give", new CommandGive(), "g")
+                        new Command("give", new CommandGive(), "g"),
+                        new Command("event", new CommandEvent(), "e"),
+                        new Command("profile", new CommandProfile(), "p")
                 )
         );
     }

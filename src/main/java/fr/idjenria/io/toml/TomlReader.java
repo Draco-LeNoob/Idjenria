@@ -7,7 +7,7 @@ import java.io.File;
 // Classe donnant accès à la lecture des fichiers Toml
 public class TomlReader {
     // Fichier de configuration du projet
-    public static final File CONFIG_FILE = new File(System.getProperty("user.dir"), "config.toml");
+    public static final File CONFIG_FILE = new File(System.getProperty("user.home"), "idjenria-config.toml");
 
     // Méthode permettant de récupérer à partir d'un fichier toml donné, le contenu d'une clef donnée
     public static String get(File file, String key){
